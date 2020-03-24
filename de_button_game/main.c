@@ -12,7 +12,18 @@ int Pressed_Confidence_level;
 int main(void)
 {
     /* Initialization area. Setting up ports and data direction registers */
-    while (1){
+    while (1)
+	{
+		if (/*button pressed for side 1*/) {
+			/* lighten up LED on portB on at a time */
+		} else {
+			/* Make sure button was released */
+		}
+		if (/*button pressed for side 2*/) {
+			/* lighten up LED on portB on at a time */
+		} else {
+		/* Make sure button was released */
+		}
 		// Process button clicks for side 1
 		// Process button click for side 2
     }
