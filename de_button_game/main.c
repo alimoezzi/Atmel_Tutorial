@@ -5,6 +5,10 @@
  * Author : SARM
  */ 
 
+#ifndef F_CPU
+#define F_CPU 8000000UL
+#endif
+
 #include <avr/io.h>
 #include <util/delay.h>
 
@@ -12,7 +16,7 @@ int Pressed_Confidence_level[2];
 int Released_Confidence_level[2];
 int Pressed[2]; 
 // which LED is being led up
-int LEDNumber[2]
+int LEDNumber[2];
 
 
 void ProcessPressedButton(int ButtonPressed);
@@ -53,19 +57,29 @@ int main(void)
     }
 }
 
-void ProcessPressedButton( int ButtonPressed) {
+void ProcessPressedButton(int ButtonPressed) {
 	Pressed_Confidence_level[ButtonPressed]++;
-	if (Pressed_Confidence_level >3)
+	if (Pressed_Confidence_level[ButtonPressed] > 1)
 	{
 		if (Pressed[ButtonPressed] == 0)
 		{
 			Pressed[ButtonPressed] = 1;
+			if (ButtonPressed == 0) PORTB |= 1 << LEDNumber[ButtonPressed];
+			if (ButtonPressed == 1) PORTD |= 1 << LEDNumber[ButtonPressed];
 			LEDNumber[ButtonPressed]++;
-			ButtonPressed == 0 ? PORTB:PORTD |= 1 << LEDNumber;
-			if (LEDNumber > 6)
+			if (LEDNumber[ButtonPressed] > 6)
 			{
 				// PORT? is winner so blink them
-				
+				for(int i=0; i < 10;i++){
+					if (ButtonPressed == 0) PORTB &= ~(-1);
+					if (ButtonPressed == 1) PORTD &= ~(-1);
+					_delay_ms(30);
+					if (ButtonPressed == 0) PORTB |= -1;
+					if (ButtonPressed == 1) PORTD |= -1;
+					_delay_ms(30); 
+				}
+				LEDNumber[0] = 0;
+				LEDNumber[1] = 0;
 			}
 		}
 		Pressed_Confidence_level[ButtonPressed] = 0;
@@ -73,10 +87,10 @@ void ProcessPressedButton( int ButtonPressed) {
 }
 
 void ProcessReleasedButton(int ButtonPressed) {
-	Released_Confidence_level++;
-	if (Released_Confidence_level > 3)
+	Released_Confidence_level[ButtonPressed]++;
+	if (Released_Confidence_level[ButtonPressed] > 1)
 	{
-		Pressed[ButtonPressed]=1;
-		Released_Confidence_level = 0;
+		Pressed[ButtonPressed] = 0;
+		Released_Confidence_level[ButtonPressed] = 0;
 	}
 }
