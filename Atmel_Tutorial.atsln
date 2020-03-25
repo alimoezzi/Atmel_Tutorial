@@ -11,6 +11,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "blink_button", "blink_butto
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "blink_button_debouncing", "blink_button_debouncing\blink_button_debouncing.cproj", "{19E99509-3EB3-45B2-9D4C-1AC2BAD022FB}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "de_button_game", "de_button_game\de_button_game.cproj", "{1B9748A1-B8FE-4E30-9586-84AD07606C60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -33,6 +35,10 @@ Global
 		{19E99509-3EB3-45B2-9D4C-1AC2BAD022FB}.Debug|AVR.Build.0 = Debug|AVR
 		{19E99509-3EB3-45B2-9D4C-1AC2BAD022FB}.Release|AVR.ActiveCfg = Release|AVR
 		{19E99509-3EB3-45B2-9D4C-1AC2BAD022FB}.Release|AVR.Build.0 = Release|AVR
+		{1B9748A1-B8FE-4E30-9586-84AD07606C60}.Debug|AVR.ActiveCfg = Debug|AVR
+		{1B9748A1-B8FE-4E30-9586-84AD07606C60}.Debug|AVR.Build.0 = Debug|AVR
+		{1B9748A1-B8FE-4E30-9586-84AD07606C60}.Release|AVR.ActiveCfg = Release|AVR
+		{1B9748A1-B8FE-4E30-9586-84AD07606C60}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
