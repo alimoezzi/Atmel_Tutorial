@@ -1,2 +1,2 @@
 # Atmel Tutorial
-Some simple AVR ATMEGA 32 program
+Some simple AVR ATMEGA 32 programs
